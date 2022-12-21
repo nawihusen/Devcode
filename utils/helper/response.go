@@ -25,6 +25,14 @@ func BadRequest() map[string]interface{} {
 	}
 }
 
+func BadRequestTodo(msg string) map[string]interface{} {
+	return map[string]interface{}{
+		"status":  "Bad Request",
+		"message": msg,
+		"data":    activity.Activity{},
+	}
+}
+
 func SuccessResponseHelper(msg interface{}) map[string]interface{} {
 	return map[string]interface{}{
 		"status":  "Success",
