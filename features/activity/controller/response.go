@@ -11,7 +11,7 @@ type Response struct {
 	Title      string    `json:"title"`
 	Created_at time.Time `json:"created_at"`
 	Updated_at time.Time `json:"updated_at"`
-	Deleted_at time.Time `json:"deleted_at"`
+	Deleted_at []int     `json:"deleted_at"`
 }
 
 type CreateResponse struct {
@@ -29,7 +29,7 @@ func CoreToResponse(data activity.Activity) Response {
 		Title:      data.Title,
 		Created_at: data.Created_at,
 		Updated_at: data.Updated_at,
-		Deleted_at: data.Deleted_at,
+		Deleted_at: nil,
 	}
 }
 
