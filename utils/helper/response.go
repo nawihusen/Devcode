@@ -1,50 +1,57 @@
 package helper
 
-import "skyshi/features/activity"
+type Empty struct {
+}
 
-func FailedResponseHelper(msg interface{}) map[string]interface{} {
-	return map[string]interface{}{
-		"status":  "Failed",
-		"message": msg,
+type Respnse struct {
+	Status  any `json:"status"`
+	Message any `json:"message"`
+	Data    any `json:"data"`
+}
+
+func FailedResponseHelper(msg interface{}) Respnse {
+	return Respnse{
+		Status:  "Failed",
+		Message: msg,
 	}
 }
 
-func NotFoundHelper(msg interface{}) map[string]interface{} {
-	return map[string]interface{}{
-		"status":  "Not Found",
-		"message": msg,
-		"data":    activity.Activity{},
+func NotFoundHelper(msg interface{}) Respnse {
+	return Respnse{
+		Status:  "Not Found",
+		Message: msg,
+		Data:    Empty{},
 	}
 }
 
-func BadRequest() map[string]interface{} {
-	return map[string]interface{}{
-		"status":  "Bad Request",
-		"message": "title cannot be null",
-		"data":    activity.Activity{},
+func BadRequest() Respnse {
+	return Respnse{
+		Status:  "Bad Request",
+		Message: "title cannot be null",
+		Data:    Empty{},
 	}
 }
 
-func BadRequestTodo(msg string) map[string]interface{} {
-	return map[string]interface{}{
-		"status":  "Bad Request",
-		"message": msg,
-		"data":    activity.Activity{},
+func BadRequestTodo(msg string) Respnse {
+	return Respnse{
+		Status:  "Bad Request",
+		Message: msg,
+		Data:    Empty{},
 	}
 }
 
-func SuccessResponseHelper(msg interface{}) map[string]interface{} {
-	return map[string]interface{}{
-		"status":  "Success",
-		"message": msg,
-		"data":    activity.Activity{},
+func SuccessResponseHelper(msg interface{}) Respnse {
+	return Respnse{
+		Status:  "Success",
+		Message: msg,
+		Data:    Empty{},
 	}
 }
 
-func SuccessDataResponseHelper(msg, data interface{}) map[string]interface{} {
-	return map[string]interface{}{
-		"status":  "Success",
-		"message": msg,
-		"data":    data,
+func SuccessDataResponseHelper(msg, data interface{}) Respnse {
+	return Respnse{
+		Status:  "Success",
+		Message: msg,
+		Data:    data,
 	}
 }
