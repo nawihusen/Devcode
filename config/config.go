@@ -24,7 +24,6 @@ func GetConfig() *AppConfig {
 	if config == nil {
 		config = initConfig()
 	}
-
 	return config
 
 }
@@ -37,6 +36,5 @@ func initConfig() *AppConfig {
 	defaultConfig.MYSQL_USER = os.Getenv("MYSQL_USER")
 	defaultConfig.MYSQL_PASSWORD = os.Getenv("MYSQL_PASSWORD")
 	defaultConfig.MYSQL_DBNAME = os.Getenv("MYSQL_DBNAME")
-
 	return &defaultConfig
 }

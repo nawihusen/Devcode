@@ -22,7 +22,6 @@ func InitDBmySql(config *config.AppConfig) *gorm.DB {
 	if err != nil {
 		log.Fatal(err.Error())
 	}
-
 	return db
 
 }

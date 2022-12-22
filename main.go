@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"skyshi/config"
 	"skyshi/factory"
 	"skyshi/migrations"
@@ -12,12 +13,11 @@ import (
 func main() {
 	cfg := config.GetConfig()
 	db := database.InitDBmySql(cfg)
-
 	migrations.InitMigrate(db)
 
 	e := echo.New()
 
 	factory.InitFactory(e, db)
-
+	fmt.Println("test")
 	e.Logger.Fatal(e.Start(":3030"))
 }

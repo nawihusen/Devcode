@@ -32,8 +32,6 @@ func (storage *Storage) GetATodo(id uint) (todo.Todo, string, error) {
 
 	tx := storage.query.Where("id = ?", id).First(&model)
 	if tx.Error != nil {
-		return todo.Todo{}, "DataBase Error", tx.Error
-	} else if tx.RowsAffected == 0 {
 		return todo.Todo{}, "Not Found", nil
 	}
 
@@ -51,9 +49,7 @@ func (storage *Storage) Create(core todo.Todo) (todo.Todo, string, error) {
 
 func (storage *Storage) Delete(id uint) (string, error) {
 	tx := storage.query.Where("id = ?", id).Delete(todo.Todo{})
-	if tx.Error != nil {
-		return "DataBase Error", tx.Error
-	} else if tx.RowsAffected == 0 {
+	if tx.Error != nil || tx.RowsAffected == 0 {
 		return "Not Found", nil
 	}
 
@@ -63,9 +59,7 @@ func (storage *Storage) Delete(id uint) (string, error) {
 func (storage *Storage) Update(id uint, core todo.Todo) (string, error) {
 	update := models.CoreToModelTodo(core)
 	tx := storage.query.Model(&models.Todo{}).Where("id = ?", id).Updates(update)
-	if tx.Error != nil {
-		return "DataBase Error", tx.Error
-	} else if tx.RowsAffected == 0 {
+	if tx.Error != nil || tx.RowsAffected == 0 {
 		return "Not Found", nil
 	}
 
