@@ -32,7 +32,7 @@ func initConfig() *AppConfig {
 
 	var defaultConfig AppConfig
 	defaultConfig.MYSQL_HOST = os.Getenv("MYSQL_HOST")
-	defaultConfig.MYSQL_PORT = os.Getenv("MYSQL_PORT")
+	defaultConfig.MYSQL_PORT = "3306"
 	defaultConfig.MYSQL_USER = os.Getenv("MYSQL_USER")
 	defaultConfig.MYSQL_PASSWORD = os.Getenv("MYSQL_PASSWORD")
 	defaultConfig.MYSQL_DBNAME = os.Getenv("MYSQL_DBNAME")
