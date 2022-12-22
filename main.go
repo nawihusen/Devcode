@@ -1,7 +1,6 @@
 package main
 
 import (
-	"fmt"
 	"skyshi/config"
 	"skyshi/factory"
 	"skyshi/migrations"
@@ -18,6 +17,5 @@ func main() {
 	e := echo.New()
 
 	factory.InitFactory(e, db)
-	fmt.Println("test")
-	e.Logger.Fatal(e.Start(":3030"))
+	e.Logger.Fatal(e.Start(":8090"))
 }
